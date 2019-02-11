@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+        <hibernate-mapping>
+        	<class name="tablas.Departamento" table="departamento">
+        		<id name ="idDepartamento" type="int">
+        			<column name="idDep" />
+        			<generator class="assigned" />
+        		</id>
+        		<property name="nombreDep" type="java.lang.String">
+        			<column name="nombreDep" />
+        		</property>
+        		<set name="empleado" table="empleado" inverse="true" lazy="true" fetch="select">
+        			<key>
+        				<column name="idDep" not-null="true"></column>
+        			</key>
+        			<one-to-many class="tablas.Empleado"/>
+        		</set>
+        	</class>
+        
+        </hibernate-mapping>
